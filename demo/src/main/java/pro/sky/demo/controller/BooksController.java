@@ -15,14 +15,23 @@ public class BooksController {
         this.bookService = bookService;
     }
 
-    @GetMapping({"id"})
-    public Book getBookInfo(@PathVariable long id){
+    @GetMapping("{id}")
+    public Book getBookInfo(@PathVariable long id) {
         return bookService.findBook(id);
     }
 
     @PostMapping
-    public Book createBook(Book book) {
+    public Book createBook(@RequestBody Book book) {
         return bookService.createBook(book);
     }
 
+    @PutMapping
+    public Book editBook(@RequestBody Book book) {
+        return bookService.editBook(book);
+    }
+
+    @DeleteMapping("{id}")
+    public Book deleteBook(@PathVariable long id) {
+        return bookService.deleteBook(id);
+    }
 }
