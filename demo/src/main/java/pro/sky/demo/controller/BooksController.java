@@ -6,7 +6,7 @@ import pro.sky.demo.model.Book;
 import pro.sky.demo.service.BookService;
 
 @RestController
-@RequestMapping(path = "books")
+@RequestMapping("books")
 public class BooksController {
     @Autowired
     private final BookService bookService;
@@ -15,7 +15,7 @@ public class BooksController {
         this.bookService = bookService;
     }
 
-    @GetMapping(path = {"id"})
+    @GetMapping({"id"})
     public Book getBookInfo(@PathVariable long id){
         return bookService.findBook(id);
     }
