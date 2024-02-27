@@ -43,9 +43,11 @@ public class BooksController {
     }
 
     @DeleteMapping("{id}")
-    public Book deleteBook(@PathVariable long id) {
-        return bookService.deleteBook(id);
+    public ResponseEntity<Book> deleteBook(@PathVariable long id) {
+        bookService.deleteBook(id);
+        return ResponseEntity.ok().build();
     }
+
     @GetMapping
     public ResponseEntity<Collection<Book>> getAllBooks() {
         return ResponseEntity.ok(bookService.getAllBooks());
